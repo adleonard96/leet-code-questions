@@ -5,7 +5,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-
+ 
 def sortedArrayToBST(nums: List[int]) -> Optional[TreeNode]:
         mid = len(nums) // 2
         root = TreeNode(nums[mid])
