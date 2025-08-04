@@ -21,7 +21,3 @@ class Solution:
             j += 1
     
         return time_needed
-    
-sol = Solution()
-
-print(sol.minCost("aabaa", [1,2,3,4,1]))
