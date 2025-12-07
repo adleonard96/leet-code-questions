@@ -1,17 +1,33 @@
 class Solution:
-    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        count = {}
-        for letter in magazine:
-            if count.get(letter):
-                count[letter] += 1
+    def evalRPN(self, tokens: List[str]) -> int:
+        OPERATIONS = ["+", "-", "*", "/"]
+        vals = []
+        for token in tokens:
+            if token in OPERATIONS:
+                match token:
+                    case "+":
+                        val1 = vals.pop()
+                        val2 = vals.pop()
+                        vals.append(val1 + val2)
+                    
+                    case "*":
+                        val1 = vals.pop()
+                        val2 = vals.pop()
+                        vals.append(val1 * val2)
+                        
+                    case "/":
+                        val1 = vals.pop()
+                        val2 = vals.pop()
+                        vals.append(int(val2 / val1))
+
+                    case "-":
+                        val1 = vals.pop()
+                        val2 = vals.pop()
+                        vals.append(val2 - val1)
             else:
-                count[letter] = 1
-
-        for letter in ransomNote:
-            if count.get(letter) and count.get(letter) > 0:
-                count[letter] -= 1
-            else:
-                return False
-
-
-        return True
+                vals.append(int(token))
+                
+        return vals[0]
+    
+sol = Solution()
+print(sol.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))
