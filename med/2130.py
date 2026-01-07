@@ -17,14 +17,14 @@ class Solution:
 
         mid = slow
         locator = head.next
-        prev = head
+        end_of_first = head
 
         while locator != slow:
-            prev = prev.next
+            end_of_first = end_of_first.next
             locator = locator.next
-        end_of_first = prev
+            
         curr = slow
-
+        prev = None
         while curr:
             next = curr.next
             curr.next = prev
@@ -32,7 +32,7 @@ class Solution:
             curr = next
 
         end_of_first.next = prev
-        
+        mid = end_of_first.next
         ans = 0
         while head and mid:
             ans = max(head.val + mid.val, ans)
