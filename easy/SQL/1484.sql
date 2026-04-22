@@ -1,0 +1,2 @@
+/* Write your T-SQL query statement below */
+SELECT sell_date, count(*) num_sold, STRING_AGG(product, ',') WITHIN GROUP (order by product) products from (SELECT DISTINCT * FROM ACTIVITIES) f group by sell_date 
